@@ -9,7 +9,7 @@ RULE_ID="$1"
 AGENT_ID="$2"
 
 # Full path to the BAT file on the Windows agent
-BAT_PATH="C:\\Wazuh\\active-responses\\bin\\firewall-blocker.bat"
+BAT_PATH="C:\\Program Files (x86)\\ossec-agent\\active-response\\bin\\firewall-blocker.bat"
 
 # Log (optional but VERY useful)
 LOG_FILE="/var/ossec/logs/active-responses.log"
