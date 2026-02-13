@@ -1,0 +1,11 @@
+Custom Decoder 
+Custom decoders extract critical information from active response logs for visibility in the Wazuh GUI. 
+
+Location: /var/ossec/etc/decoders/local_decoder.xml (Wazuh Manager) 
+
+XML Configuration: 
+
+<!-- Child decoder for ar_log_json to extract IP from windows_ip_block.exe logs --> <decoder name="ar_log_json_child">    
+<parent>ar_log_json</parent>   
+<regex type="pcre2">windows_ip_block\.exe:\s+(?:BLOCK|UNBLOCK)\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})</regex>   
+<order>srcip</order> </decoder> 
