@@ -42,10 +42,10 @@ Copy the provided files into the Wazuh Manager configuration:
 
 ```bash
 # Rules
-sudo cp Custom\ Rules.txt /var/ossec/etc/rules/local_rules.xml
+sudo nano /var/ossec/etc/rules/local_rules.xml
 
 # Decoders
-sudo cp Custom\ Decoder.txt /var/ossec/etc/decoders/local_decoder.xml
+sudo nano /var/ossec/etc/decoders/local_decoder.xml
 ```
 
 Restart Wazuh Manager:
