@@ -1,4 +1,4 @@
-Wazuh Active Response for Windows Brute Force
+## Wazuh Active Response for Windows Brute Force
 
 ## 📌 Overview
 This project extends **Wazuh Active Response** to handle brute‑force login attempts on **Windows servers**.  
