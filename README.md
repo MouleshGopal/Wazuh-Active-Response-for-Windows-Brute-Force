@@ -1,5 +1,12 @@
 ## Wazuh Active Response for Windows Brute Force
 
+
+## 🎯 Why This Process Is Needed
+- **Linux logs** → Report source IP in `data.srcip`.  
+- **Windows logs** → Report source IP in `data.win.eventdata.ipAddress`.  
+- Without custom decoders and rules, Wazuh cannot correctly identify the source IP in Windows logs.  
+- This solution ensures Wazuh can parse Windows Event Logs and automatically block brute‑force sources.
+
 ## 📌 Overview
 This project extends **Wazuh Active Response** to handle brute‑force login attempts on **Windows servers**.  
 By default, Wazuh expects the source IP address to be reported in the `data.srcip` field. While this works on Linux logs, Windows Event Logs report the IP address in a different field: `data.win.eventdata.ipAddress`.  
@@ -104,9 +111,3 @@ netsh advfirewall firewall show rule name=all
 ```
 
 ---
-
-## 🎯 Why This Process Is Needed
-- **Linux logs** → Report source IP in `data.srcip`.  
-- **Windows logs** → Report source IP in `data.win.eventdata.ipAddress`.  
-- Without custom decoders and rules, Wazuh cannot correctly identify the source IP in Windows logs.  
-- This solution ensures Wazuh can parse Windows Event Logs and automatically block brute‑force sources.
