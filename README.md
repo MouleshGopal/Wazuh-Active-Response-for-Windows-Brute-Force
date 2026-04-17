@@ -19,7 +19,8 @@ Wazuh can automatically detect failed login attempts (Event ID 4625) and block t
 - **Custom Decoder.txt** → Defines how Wazuh parses Windows Event Logs to extract the IP address field.  
 - **Custom Rules.txt** → Contains detection rules for failed login attempts (Event ID 4625).  
 - **Windows-ip-block.py** → Python script that blocks the source IP using Windows Firewall.  
-
+- **Whitelist.json** → File will let you add your internal and isp Ipaddress.
+- **Already_blocked_logged.json** → File records all the repeated ip address.
 ---
 
 ## ⚙️ Prerequisites
@@ -99,11 +100,6 @@ net start wazuh-agent
 ```
 
 ---
-
-### 5. already_blocked_logged.json,whitelist.json
-
-1 whitelist.json file will let you add your internal and isp Ipaddress.
-2 already_blocked_logged.json file records all the repeated ip address.
 
 ## ✅ Verification
 1. Trigger failed login attempts on the Windows server (Event ID **4625**).  
