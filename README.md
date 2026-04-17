@@ -100,6 +100,11 @@ net start wazuh-agent
 
 ---
 
+### 5. already_blocked_logged.json,whitelist.json
+
+1 whitelist.json file will let you add your internal and isp Ipaddress.
+2 already_blocked_logged.json file records all the repeated ip address.
+
 ## ✅ Verification
 1. Trigger failed login attempts on the Windows server (Event ID **4625**).  
 2. Confirm logs are visible in the **Wazuh Dashboard GUI**.  
