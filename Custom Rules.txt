@@ -6,22 +6,35 @@ Location: /var/ossec/etc/rules/local_rules.xml (Wazuh Manager)
 
 XML Configuration: 
 
-<group name="windows,active_response,firewall">   <!-- Base AR detection -->   
-<rule id="100600" level="12"> 
-<if_sid>650</if_sid>      
-<match>windows_ip_block.exe:</match>   
-<description>Windows Active Response firewall action detected</description>   
-</rule>      <!-- BLOCK - use regex to ensure exact match -->   
+<group name="windows,active_response,firewall">
+  
+  <rule id="100600" level="10" frequency="2" timeframe="86400" ignore="60">
+    <if_sid>650</if_sid>
+    <match>windows_ip_block.exe:</match>
+    <description>Windows Active Response firewall action detected</description>
+    <options>no_log</options>
+  </rule>
  
-<rule id="100601" level="13">     
-<if_sid>100600</if_sid>    
-<regex type="pcre2">windows_ip_block\.exe: BLOCK\s</regex>   
-<description>IP BLOCKED by windows_ip_block.exe: $(srcip)</description>    
-<mitre> <id>T1110</id></mitre>   
-</rule>      <!-- UNBLOCK - use regex to ensure exact match -->  
-<rule id="100602" level="10">    
-<if_sid>100600</if_sid>   
-<regex type="pcre2">windows_ip_block\.exe: UNBLOCK\s</regex>     
-<description>IP UNBLOCKED by windows_ip_block.exe: $(srcip)</description>  
-</rule>  
-</group> 
+  
+  <rule id="100601" level="11" frequency="2" timeframe="86400" ignore="60">
+    <if_sid>100600</if_sid>
+    <match>windows_ip_block.exe: BLOCK</match>
+    <description>IP BLOCKED by windows_ip_block.exe: $(srcip)</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+  </rule>
+  
+  <rule id="100602" level="10">
+    <if_sid>100600</if_sid>
+    <match>windows_ip_block.exe: UNBLOCK</match>
+    <description>IP UNBLOCKED by windows_ip_block.exe: $(srcip)</description>
+  </rule>
+  
+ <rule id="100603" level="9" frequency="2" timeframe="86400" ignore="180">
+    <if_sid>100600</if_sid>
+    <match>windows_ip_block.exe: Already_Blocked</match>
+    <description>IP Already Blocked after repeated attempts</description>
+  </rule>
+  
+</group>
